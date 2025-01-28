@@ -1,0 +1,12 @@
+{
+    "AcunetixAPI": {
+        "BaseURL": "https://your-acunetix-server/api/v1",
+        "APIKey": "your-api-key",
+        "TargetURL": "https://target-url"
+    },
+    "Telegram": {
+        "BotToken": "your-telegram-bot-token",
+        "ChatID": "your-telegram-chat-id"
+    },
+    "TargetsFile": "targets.txt"
+}

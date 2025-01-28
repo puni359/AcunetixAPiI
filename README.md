@@ -1,54 +1,69 @@
-# Acunetix Scanner
+# Сканер Acunetix
 
-This Go program interacts with the Acunetix API to perform automated scanning of multiple targets and provides notifications through Telegram.
+Программа на Python для автоматизации сканирования целей через API Acunetix с уведомлениями в Telegram.
 
-## Features
+## Возможности
 
-- Reads targets from a text file
-- Initiates Acunetix scans for each target
-- Monitors scan progress
-- Sends notifications via Telegram when scans complete
-- Exports vulnerabilities to CSV files
+- Чтение целей из текстового файла
+- Автоматический запуск сканирования для каждой цели
+- Мониторинг процесса сканирования
+- Отправка уведомлений в Telegram по завершении сканирования
+- Экспорт найденных уязвимостей в CSV файлы
 
-## Setup
+## Установка
 
-1. Install Go (1.16 or later)
-2. Configure `config.json` with your settings:
-   - Acunetix API URL and API key
-   - Telegram bot token and chat ID
-3. Add target URLs to `targets.txt` (one per line)
+1. Установите Python (версия 3.8 или выше)
+2. Установите зависимости:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Настройте файл `config.json`
+4. Добавьте цели для сканирования в `targets.txt`
 
-## Configuration
+## Настройка
 
-Edit `config.json` with your specific settings:
+Отредактируйте `config.json`, указав ваши данные:
 ```json
 {
     "AcunetixAPI": {
-        "BaseURL": "https://your-acunetix-instance/api/v1",
-        "APIKey": "your-api-key",
-        "TargetURL": "https://your-target-url"
+        "BaseURL": "https://ваш-сервер-acunetix/api/v1",
+        "APIKey": "ваш-api-ключ",
+        "TargetURL": "https://целевой-url"
     },
     "Telegram": {
-        "BotToken": "your-telegram-bot-token",
-        "ChatID": "your-telegram-chat-id"
+        "BotToken": "токен-бота-telegram",
+        "ChatID": "id-чата-telegram"
     },
     "TargetsFile": "targets.txt"
 }
 ```
 
-## Running the Scanner
+## Запуск сканера
 
 ```bash
-go run main.go
+python main.py
 ```
 
-## Output
+## Результаты работы
 
-The program will:
-1. Create a scan for each target in targets.txt
-2. Monitor the progress of each scan
-3. Send a Telegram notification when each scan completes
-4. Generate a CSV file with vulnerabilities for each completed scan
+Программа выполнит следующие действия:
+1. Создаст сканирование для каждой цели из файла targets.txt
+2. Будет отслеживать прогресс каждого сканирования
+3. Отправит уведомление в Telegram при завершении каждого сканирования
+4. Создаст CSV файл с найденными уязвимостями
 
-CSV files will be named: `vulnerabilities_[target]_[timestamp].csv`
-# AcunetixAPiI
+CSV файлы будут иметь имя: `vulnerabilities_[цель]_[дата_время].csv`
+
+## Структура CSV отчета
+
+- ID уязвимости
+- Уровень опасности
+- Название уязвимости
+- Описание
+
+## Требования
+
+Указаны в файле `requirements.txt`:
+- requests
+- python-telegram-bot
+- python-dotenv
